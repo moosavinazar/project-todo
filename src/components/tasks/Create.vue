@@ -5,12 +5,15 @@
   const store = useStore();
   const title = ref('');
   const titleErrorText = ref('');
-  function storeTask() {
+  const loading = ref(false);
+  async function storeTask() {
     if (title.value === "") {
       titleErrorText.value = "Title is required";
     } else {
+      loading.value = true;
       titleErrorText.value = "";
-      store.dispatch('storeTask', title.value);
+      await store.dispatch('task/storeTask', title.value);
+      loading.value = false;
     }
   }
 </script>
@@ -27,7 +30,10 @@
           </div>
         </div>
         <div class="col-auto">
-          <button class="btn btn-dark">Create</button>
+          <button class="btn btn-dark">
+            <span v-if="loading" class="spinner-border spinner-border-sm"></span>
+            Create
+          </button>
         </div>
       </form>
     </div>
