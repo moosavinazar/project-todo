@@ -1,10 +1,14 @@
 import {createRouter, createWebHistory} from "vue-router";
 import Home from "@/pages/Home.vue";
-import Task from "@/pages/Task.vue";
+import TaskIndex from "@/pages/Task.vue";
+import ProductIndex from "@/pages/Product.vue";
+import CartIndex from "@/pages/Cart.vue";
 
 const routes = [
     {name: 'home', path: '/', component: Home},
-    {name: 'task', path: '/tasks', component: Task}
+    {name: 'task', path: '/tasks', component: TaskIndex},
+    {name: 'product', path: '/products', component: ProductIndex},
+    {name: 'cart', path: '/cart', component: CartIndex}
 ]
 
 const router = createRouter({
